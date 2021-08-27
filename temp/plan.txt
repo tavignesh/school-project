@@ -1,0 +1,5 @@
+login system (show and save player names, score etc)
+who clicks first (wcf)
+tic tac toe (ttt)
+turtle race (turtle)
+flappy bird
