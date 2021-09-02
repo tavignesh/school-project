@@ -1,5 +1,6 @@
 from tkinter import *
 import time
+import random
 
 from turtle import turtle
 from login import login
@@ -41,6 +42,22 @@ def tttgame():
     ttt.game(1234, consolewindow)
 
 
+def randomgame():
+    randgame = random.choice(["turtle", "wcf", "ttt", "flappy"])
+    if randgame == "turtle":
+        turtlegame()
+    elif randgame == "wcf":
+        wcfgame()
+    elif randgame == "ttt":
+        tttgame()
+    elif randgame == "flappy":
+        flappygame()
+
+
+def exitwindow():
+    consolewindow.destroy()
+
+
 def crediter():
     pass
 
@@ -59,7 +76,11 @@ tttbtn.pack()
 tttbtn["state"] = "disabled"
 loginbtn = Button(consolewindow, text="Login", command=loginer)
 loginbtn.pack()
+randbtn = Button(consolewindow, text="Random Game", command=randomgame)
+randbtn.pack()
 creditsbutton = Button(consolewindow, text="Credits", command=crediter)
 creditsbutton.pack()
+exitbtn = Button(consolewindow, text="Exit", command=exitwindow)
+exitbtn.pack()
 
 consolewindow.mainloop()
