@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 import time
 
-def turtlegame(player1, mainwindow):
+def game(player1, mainwindow):
     window = Toplevel(mainwindow)
     window.geometry("600x300")
     p1 = PhotoImage(file = './turtle/assets/turtle1.png')
@@ -28,9 +28,7 @@ def turtlegame(player1, mainwindow):
 
     def keypress(event):
         global player1pos, player2pos, winner, loser
-        print(1)
         if winner == None:
-            print(2)
             if event.char == "z":
                 canvas.move(player1, 10, 0)
                 player1pos += 2

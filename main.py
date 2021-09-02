@@ -3,6 +3,10 @@ import time
 
 from turtle import turtle
 from login import login
+from wcf import wcf
+from flappy import flappy
+from ttt import ttt
+
 
 logedin = 0
 
@@ -14,23 +18,27 @@ consolewindow.geometry("600x300")
 def loginer():
     login_info = login.login(consolewindow)
     loginbtn["state"] = "disabled"
+    tttbtn["state"] = "normal"
+    flappybtn["state"] = "normal"
+    wcfbtn["state"] = "normal"
+    turtlebtn["state"] = "normal"
     return login_info
 
 
 def turtlegame():
-    turtle.turtlegame(1232, consolewindow)
+    turtle.game(1232, consolewindow)
 
 
 def flappygame():
-    pass
+    flappy.game(12312, consolewindow)
 
 
-def wclgame():
-    pass
+def wcfgame():
+    wcf.game(1231, consolewindow)
 
 
 def tttgame():
-    pass
+    ttt.game(1234, consolewindow)
 
 
 def crediter():
@@ -43,12 +51,9 @@ flappybtn["state"] = "disabled"
 turtlebtn = Button(consolewindow, text="Play Turtle Race", command=turtlegame)
 turtlebtn.pack()
 turtlebtn["state"] = "disabled"
-wclbtn = Button(consolewindow, text="Play WCL", command=wclgame)
-wclbtn.pack()
-wclbtn["state"] = "disabled"
-snakebtn = Button(consolewindow, text="Play Snake", command=snakegame)
-snakebtn.pack()
-snakebtn["state"] = "disabled"
+wcfbtn = Button(consolewindow, text="Play WCF", command=wcfgame)
+wcfbtn.pack()
+wcfbtn["state"] = "disabled"
 tttbtn = Button(consolewindow, text="Play TicTacToe", command=tttgame)
 tttbtn.pack()
 tttbtn["state"] = "disabled"

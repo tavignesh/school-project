@@ -1,4 +1,4 @@
 from tkinter import *
 
-def game(player1, mainwindow):
+def game(player, mainwindow):
     pass
