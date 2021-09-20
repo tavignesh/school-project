@@ -14,6 +14,8 @@ logedin = 0
 consolewindow = Tk()
 consolewindow.title("VVLC Gaming Console")
 consolewindow.geometry("600x300")
+p1 = PhotoImage(file='./assets/game.png')
+consolewindow.iconphoto(False, p1)
 
 
 def loginer():
