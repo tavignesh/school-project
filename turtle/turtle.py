@@ -1,24 +1,25 @@
 from tkinter import *
 from PIL import ImageTk, Image
-import time
 import tkinter.messagebox
 
 
-def game(player1, mainwindow):
+def game(player1id, player2id, mainwindow):
     window = Toplevel(mainwindow)
     window.geometry("600x300")
     p1 = PhotoImage(file='./turtle/assets/turtle1.png')
     window.iconphoto(False, p1)
     window.title("Turtle Game | VVLC")
-    global winner, loser, player1pos, player2pos
+    # global winner, loser, player1pos, player2pos
     player1pos = 0
     player2pos = 0
     winner = None
     loser = None
+    gamedone = None
 
     def gameover(winner, loser):
+        global gamedone
         tkinter.messagebox.showinfo("Game Over", f"{winner} defeated {loser}")
-        # TODO: save score here
+        gamedone = winner
 
     def exit():
         window.destroy()
@@ -34,14 +35,14 @@ def game(player1, mainwindow):
                 player2pos += 2
             if player1pos == 100:
                 print("Player 1 Wins")
-                winner = 1
-                loser = 2
+                winner = player1id
+                loser = player2id
                 exitbutton.pack()
                 gameover(winner, loser)
             elif player2pos == 100:
                 print("Player 2 Wins")
-                winner = 2
-                loser = 1
+                winner = player2id
+                loser = player1id
                 exitbutton.pack()
                 gameover(winner, loser)
 
@@ -59,5 +60,6 @@ def game(player1, mainwindow):
     canvas.create_line(30, 30, 30, 200, fill="red")
 
     window.bind("<Key>", keypress)
-
+    if gamedone != None:
+        return gamedone
     window.mainloop()

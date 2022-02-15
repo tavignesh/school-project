@@ -15,7 +15,6 @@ def getpass():
 
 
 def login(window):
-    return
     global loginwindow
     loginwindow = Toplevel(window)
     window.title("Login | VVLC")
