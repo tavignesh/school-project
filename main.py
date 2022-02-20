@@ -2,7 +2,6 @@ from tkinter import *
 import random
 
 from turtle import turtle
-from login import login
 from wcf import wcf
 from ttt import ttt
 
@@ -16,18 +15,54 @@ p1 = PhotoImage(file='./assets/game.png')
 consolewindow.iconphoto(False, p1)
 
 
-def loginer():
-    login_info = login.login(consolewindow)
-    loginbtn["state"] = "disabled"
-    tttbtn["state"] = "normal"
-    wcfbtn["state"] = "normal"
-    turtlebtn["state"] = "normal"
-    return login_info
+def loginer(text=None):
+    global over
+    root = Toplevel(consolewindow)
+    root.geometry("300x300")
+    name_var = StringVar()
+    passw_var = StringVar()
+
+    def submit():
+        global over
+
+        username = name_var.get()
+        password = passw_var.get()
+
+        username = int(username)
+
+        print("The name is : " + str(username))
+        print("The password is : " + password)
+
+        name_var.set("")
+        passw_var.set("")
+        over = username
+        root.quit()
+        root.destroy()
+
+    txtlabel = Label(root, text=text, justify="center", font=('calibre', 20, 'bold'))
+    name_label = Label(root, text='Username')
+    name_entry = Entry(root, textvariable=name_var)
+    passw_label = Label(root, text='Password')
+    passw_entry = Entry(root, textvariable=passw_var, show='*')
+    print(123)
+    sub_btn = Button(root, text='Submit', command=submit)
+    print(12)
+    txtlabel.pack()
+    name_label.pack()
+    name_entry.pack()
+    passw_label.pack()
+    passw_entry.pack()
+    sub_btn.pack()
+    print(1234)
+
+    root.mainloop()
+
+    return over
 
 
 def turtlegame():
-    player1 = loginer()
-    player2 = loginer()
+    player1 = loginer(text="Player 1")
+    player2 = loginer(text="Player 2")
     winner = turtle.game(player1, player2, consolewindow)
     creditor(winner, 10)
 
@@ -62,7 +97,7 @@ def credits():
     window.geometry("300x300")
     p1 = PhotoImage(file='./assets/game.png')
     window.iconphoto(False, p1)
-    window.title("VVLC Creaators")
+    window.title("VVLC Creators")
 
 
 def leaderboard():
@@ -81,15 +116,10 @@ def documentation():
 
 turtlebtn = Button(consolewindow, text="Play Turtle Race", command=turtlegame)
 turtlebtn.pack()
-turtlebtn["state"] = "disabled"
 wcfbtn = Button(consolewindow, text="Play WCF", command=wcfgame)
 wcfbtn.pack()
-wcfbtn["state"] = "disabled"
 tttbtn = Button(consolewindow, text="Play TicTacToe", command=tttgame)
 tttbtn.pack()
-tttbtn["state"] = "disabled"
-loginbtn = Button(consolewindow, text="Login", command=loginer)
-loginbtn.pack()
 randbtn = Button(consolewindow, text="Random Game", command=randomgame)
 randbtn.pack()
 creditsbtn = Button(consolewindow, text="Leaderboard", command=leaderboard)
