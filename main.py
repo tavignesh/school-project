@@ -1,5 +1,6 @@
 from tkinter import *
 import random
+import mysql.connector as mysql
 
 from turtle import turtle
 from wcf import wcf
@@ -14,6 +15,9 @@ consolewindow.geometry("600x300")
 p1 = PhotoImage(file='./assets/game.png')
 consolewindow.iconphoto(False, p1)
 
+connectr = mysql.connect(host="localhost", passwd="admin", user="root")
+cursor = connectr.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS VVLCDATABASE")
 
 def loginer(text=None):
     global over

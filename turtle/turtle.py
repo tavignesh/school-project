@@ -9,7 +9,7 @@ def game(player1id, player2id, mainwindow):
     p1 = PhotoImage(file='./turtle/assets/turtle1.png')
     window.iconphoto(False, p1)
     window.title("Turtle Game | VVLC")
-    # global winner, loser, player1pos, player2pos
+    global winner, loser, player1pos, player2pos
     player1pos = 0
     player2pos = 0
     winner = None
