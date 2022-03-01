@@ -1,6 +1,0 @@
-i have tried my best to include all the possible topics from out school portion
-functions
-sql
-filehandling
-module
-tkinter(in appendix)
