@@ -1,6 +1,10 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.messagebox
+import mysql.connector as mysql
+
+con = mysql.connect(host="localhost", passwd="admin", user="root", database="vvlcdatabase")
+cursor = con.cursor()
 
 
 def game(player1id, player2id, mainwindow):
@@ -9,23 +13,39 @@ def game(player1id, player2id, mainwindow):
     p1 = PhotoImage(file='./turtle/assets/turtle1.png')
     window.iconphoto(False, p1)
     window.title("Turtle Game | VVLC")
-    # global winner, loser, player1pos, player2pos
+    window.focus_force()
+
+    global winner, loser, player1pos, player2pos
     player1pos = 0
     player2pos = 0
     winner = None
     loser = None
-    gamedone = None
 
     def gameover(winner, loser):
-        global gamedone
         tkinter.messagebox.showinfo("Game Over", f"{winner} defeated {loser}")
-        gamedone = winner
+        cursor.execute(f"SELECT * FROM PLAYERINFO WHERE USERNAME = '{winner}'")
+        data = cursor.fetchall()
+        data = data[0]
+        wins = data[4]
+        wins = str(wins)
+        if wins == "None":
+            wins = loser
+        else:
+            winlst = wins.split(", ")
+            if loser not in winlst:
+                wins += f", {loser}"
+        cursor.execute(f"UPDATE PLAYERINFO SET TURTLEWINS = '{wins}' WHERE USERNAME = '{winner}'")
+        con.commit()
+        con.close()
+        exit()
 
     def exit():
+        window.quit()
         window.destroy()
 
     def keypress(event):
         global player1pos, player2pos, winner, loser
+
         if winner == None:
             if event.char == "z":
                 canvas.move(player1, 10, 0)
@@ -33,13 +53,13 @@ def game(player1id, player2id, mainwindow):
             elif event.char == "m":
                 canvas.move(player2, 10, 0)
                 player2pos += 2
-            if player1pos == 100:
+            if player1pos == 110:
                 print("Player 1 Wins")
                 winner = player1id
                 loser = player2id
                 exitbutton.pack()
                 gameover(winner, loser)
-            elif player2pos == 100:
+            elif player2pos == 110:
                 print("Player 2 Wins")
                 winner = player2id
                 loser = player1id
@@ -47,19 +67,26 @@ def game(player1id, player2id, mainwindow):
                 gameover(winner, loser)
 
     exitbutton = Button(window, text="EXIT", command=exit)
-    canvas = Canvas(window, width=500, height=250)
+    canvas = Canvas(window, width=600, height=300)
     canvas.pack()
+
     img1 = Image.open("./turtle/assets/turtle2.png")
     img1 = img1.resize((50, 50), Image.ANTIALIAS)
     img1 = ImageTk.PhotoImage(img1)
     img2 = Image.open("./turtle/assets/turtle3.png")
     img2 = img2.resize((50, 50), Image.ANTIALIAS)
     img2 = ImageTk.PhotoImage(img2)
-    player1 = canvas.create_image(0, 80, image=img1)
-    player2 = canvas.create_image(0, 150, image=img2)
-    canvas.create_line(30, 30, 30, 200, fill="red")
+
+    img0 = Image.open("./turtle/assets/forestbg.png")
+    img0 = img0.resize((600, 300), Image.ANTIALIAS)
+    img0 = ImageTk.PhotoImage(img0)
+    bgimg = canvas.create_image(300, 150, image=img0)
+
+    player1 = canvas.create_image(20, 80, image=img1)
+    player2 = canvas.create_image(20, 150, image=img2)
+    canvas.create_line(50, 45, 50, 210, fill="red")
+    canvas.create_line(550, 45, 550, 210, fill="red")
 
     window.bind("<Key>", keypress)
-    if gamedone != None:
-        return gamedone
+
     window.mainloop()
