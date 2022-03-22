@@ -25,7 +25,6 @@ This project is done in python v3 by a team of students of class 12 B lead by Vi
 Our Profiles in Github.com
 https://github.com/tavignesh
 https://github.com/lucifer_brine_04
-TODO:
 
 
 What is this project?
