@@ -3,9 +3,6 @@ from PIL import ImageTk, Image
 import tkinter.messagebox
 import mysql.connector as mysql
 
-con = mysql.connect(host="localhost", passwd="admin", user="root", database="vvlcdatabase")
-cursor = con.cursor()
-
 
 def game(player1id, player2id, mainwindow):
     window = Toplevel(mainwindow)
@@ -14,6 +11,9 @@ def game(player1id, player2id, mainwindow):
     window.iconphoto(False, p1)
     window.title("Turtle Game | VVLC")
     window.focus_force()
+
+    con = mysql.connect(host="localhost", passwd="admin", user="root", database="vvlcdatabase")
+    cursor = con.cursor()
 
     global winner, loser, player1pos, player2pos
     player1pos = 0
@@ -36,7 +36,6 @@ def game(player1id, player2id, mainwindow):
                 wins += f", {loser}"
         cursor.execute(f"UPDATE PLAYERINFO SET TURTLEWINS = '{wins}' WHERE USERNAME = '{winner}'")
         con.commit()
-        con.close()
         exit()
 
     def exit():

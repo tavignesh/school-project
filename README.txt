@@ -29,7 +29,7 @@ TODO:
 
 
 What is this project?
-This is a project done using python and sql. This is a game console named VVLC which has some games which you can play and record your high scores. VVLC console presently has two games namely Turtle Race and Reflex Game.
+This is a project done using Python3 and MySQL. This is a game console named VVLC which has some games which you can play and record your high scores. VVLC console presently has two games namely Turtle Race and Reflex Game. VVLC is the short form of the names of our team members.
 
 What is Turtle Race and how to play?
 Turtle Race is a multiplayer game. It is a race between two turtles as the name suggests. The Red Turtle is controlled using the key 'z' and the Blur turtle is controlled using the key 'm'. The turtles move if you repeatedly press the respective keys and the first turtle to reach the finish line wins the race. Each new player you defeat will be shown in the Leaderboard section.

@@ -22,6 +22,7 @@ con.commit()
 
 over = False
 
+
 def loginer(text=None):
     global over
 
@@ -77,7 +78,7 @@ def loginer(text=None):
         cursor.execute("SELECT * FROM PLAYERINFO")
         profilelist = cursor.fetchall()
 
-        if len(name) > 30 or len(password) > 30 or len(username) > 30 or password == None or name == None or username == None:
+        if len(name) > 30 or len(password) > 30 or len(username) > 30 or password is None or name is None or username is None:
             exists = True
 
         for i in profilelist:
@@ -92,7 +93,6 @@ def loginer(text=None):
             over = username
         loginwindow.quit()
         loginwindow.destroy()
-
 
     txtlabel = Label(loginwindow, text=text, justify="center", font=('calibre', 20, 'bold'))
     txtlabel2 = Label(loginwindow, text="Signin", justify="center", font=('calibre', 20, 'bold'))
@@ -153,7 +153,7 @@ def reflexgame():
     while player == False:
         player = loginer(text="Singleplayer")
 
-    reflex.game(1231, consolewindow)
+    reflex.game(player, consolewindow)
 
 
 def randomgame():
@@ -203,7 +203,7 @@ def leaderboard():
     label8 = Label(window, text="Turtle Wins")
     label8.grid(row=1, column=4, sticky="w")
 
-    cursor.execute("SELECT * FROM PLAYERINFO ORDER BY REFLEXSCORE")
+    cursor.execute("SELECT * FROM PLAYERINFO ORDER BY REFLEXSCORE DESC")
     data = cursor.fetchall()
 
     for i in range(len(data)):
@@ -247,26 +247,33 @@ def documentation():
     label2.pack(anchor="w")
 
 
-turtlebtn = Button(consolewindow, text="Play Turtle Race", command=turtlegame)
-turtlebtn.pack()
-wcfbtn = Button(consolewindow, text="Play Reflex Game", command=reflexgame)
-wcfbtn.pack()
-randbtn = Button(consolewindow, text="Random Game", command=randomgame)
-randbtn.pack()
-creditsbtn = Button(consolewindow, text="Leaderboard", command=leaderboard)
-creditsbtn.pack()
-leaderboardbtn = Button(consolewindow, text="Credits", command=credits)
-leaderboardbtn.pack()
-documentationbtn = Button(consolewindow, text="Documentation", command=documentation)
-documentationbtn.pack()
-exitbtn = Button(consolewindow, text="Exit", command=exitwindow)
-exitbtn.pack()
+canvas = Canvas(consolewindow, width=600, height=300)
+canvas.pack()
+img0 = Image.open("./assets/VVLC.jpg")
+img0 = img0.resize((600, 300), Image.ANTIALIAS)
+img0 = ImageTk.PhotoImage(img0)
+bgimg = canvas.create_image(300, 150, image=img0)
 
-img1 = Image.open("./assets/vvlc.png")
-img1 = img1.resize((253, 102), Image.ANTIALIAS)
-img1 = ImageTk.PhotoImage(img1)
-imglabel = Label(consolewindow, image=img1)
-imglabel.pack()
+turtlebtn = Button(consolewindow, text="Play Turtle Race", command=turtlegame)
+canvas.create_window(300, 20, window=turtlebtn)
+
+wcfbtn = Button(consolewindow, text="Play Reflex Game", command=reflexgame)
+canvas.create_window(300, 50, window=wcfbtn)
+
+randbtn = Button(consolewindow, text="Random Game", command=randomgame)
+canvas.create_window(300, 80, window=randbtn)
+
+creditsbtn = Button(consolewindow, text="Leaderboard", command=leaderboard)
+canvas.create_window(300, 110, window=creditsbtn)
+
+leaderboardbtn = Button(consolewindow, text="Credits", command=credits)
+canvas.create_window(300, 140, window=leaderboardbtn)
+
+documentationbtn = Button(consolewindow, text="Documentation", command=documentation)
+canvas.create_window(300, 170, window=documentationbtn)
+
+exitbtn = Button(consolewindow, text="Exit", command=exitwindow)
+canvas.create_window(300, 200, window=exitbtn)
 
 consolewindow.mainloop()
 con.close()

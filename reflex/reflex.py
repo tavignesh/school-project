@@ -9,9 +9,6 @@ rt = 1
 point = 0
 loop = 0
 
-con = mysql.connect(host="localhost", passwd="admin", user="root", database="vvlcdatabase")
-cursor = con.cursor()
-
 
 def game(player1, mainwindow):
     global point
@@ -22,6 +19,9 @@ def game(player1, mainwindow):
     p1 = PhotoImage(file='./turtle/assets/turtle1.png')
     window.iconphoto(False, p1)
     window.title("Reflex Game | VVLC")
+
+    con = mysql.connect(host="localhost", passwd="admin", user="root", database="vvlcdatabase")
+    cursor = con.cursor()
 
     def change():
         global rt, loop, point
@@ -66,12 +66,14 @@ def game(player1, mainwindow):
 
         cursor.execute(f"SELECT * FROM PLAYERINFO WHERE USERNAME = '{player1}'")
         data = cursor.fetchall()
+        print(data)
         data = data[0]
         score = int(data[3])
         if point > score:
             cursor.execute(f"UPDATE PLAYERINFO SET REFLEXSCORE = {point} WHERE USERNAME = '{player1}'")
             con.commit()
             con.close()
+        point = 0
         exit()
 
     def exit():
@@ -106,10 +108,10 @@ def game(player1, mainwindow):
             point += 1
         change()
 
-    img1 = Image.open("./turtle/assets/turtle2.png")
+    img1 = Image.open("./reflex/assets/turtle1.png")
     img1 = img1.resize((80, 80), Image.ANTIALIAS)
     img1 = ImageTk.PhotoImage(img1)
-    img2 = Image.open("./turtle/assets/turtle3.png")
+    img2 = Image.open("./reflex/assets/turtle3.png")
     img2 = img2.resize((80, 80), Image.ANTIALIAS)
     img2 = ImageTk.PhotoImage(img2)
 
