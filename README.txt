@@ -10,7 +10,7 @@ Step by step
 6. Enjoy the game. :)
 
 About the project:
-This project is a submission for the class 12 computer science project for the year 2021-2022. The topic is 'Game of your choice'. We tried to impliment as much concepts as possible from the syllabus of class 12 term 1 and 2. The concepts covered in this project are:
+The concepts covered in this project are:
 MySQL- Table Creation, Manupulation, Inserting Records, Fetching Records, Traversing Records
 MySQL Connectivity - Connect, Cursor, Execute, Commit, Close
 File Handling - Opening a file, Reading the Contents
