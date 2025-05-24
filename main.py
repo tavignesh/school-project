@@ -177,8 +177,8 @@ def credits():
     window.iconphoto(False, p1)
     window.title("VVLC Creators")
 
-    label1 = Label(window, text="Creators of VVLC", justify="center", font=('calibre', 25, 'bold'))
-    label2 = Label(window, text="Vignesh.T.A\nRollno:- 29\n\nV.Viswesh Kissan\nRollno:- 28\n\nV.Lathish\nRollno:- 27\n\nK.Charan\nRollno:- 22", font=('calibre', 15, 'bold'))
+    label1 = Label(window, text="Creator of VVLC", justify="center", font=('calibre', 25, 'bold'))
+    label2 = Label(window, text="Vignesh.T.A", font=('calibre', 15, 'bold'))
     label1.pack()
     label2.pack()
 
