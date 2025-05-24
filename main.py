@@ -250,7 +250,7 @@ def documentation():
 canvas = Canvas(consolewindow, width=600, height=300)
 canvas.pack()
 img0 = Image.open("./assets/VVLC.jpg")
-img0 = img0.resize((600, 300), Image.ANTIALIAS)
+img0 = img0.resize((600, 300))
 img0 = ImageTk.PhotoImage(img0)
 bgimg = canvas.create_image(300, 150, image=img0)
 

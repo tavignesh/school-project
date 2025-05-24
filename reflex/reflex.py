@@ -109,10 +109,10 @@ def game(player1, mainwindow):
         change()
 
     img1 = Image.open("./reflex/assets/turtle1.png")
-    img1 = img1.resize((80, 80), Image.ANTIALIAS)
+    img1 = img1.resize((80, 80))
     img1 = ImageTk.PhotoImage(img1)
     img2 = Image.open("./reflex/assets/turtle3.png")
-    img2 = img2.resize((80, 80), Image.ANTIALIAS)
+    img2 = img2.resize((80, 80))
     img2 = ImageTk.PhotoImage(img2)
 
     i1_label = Label(window, image=img1)

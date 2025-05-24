@@ -70,14 +70,14 @@ def game(player1id, player2id, mainwindow):
     canvas.pack()
 
     img1 = Image.open("./turtle/assets/turtle2.png")
-    img1 = img1.resize((50, 50), Image.ANTIALIAS)
+    img1 = img1.resize((50, 50))
     img1 = ImageTk.PhotoImage(img1)
     img2 = Image.open("./turtle/assets/turtle3.png")
-    img2 = img2.resize((50, 50), Image.ANTIALIAS)
+    img2 = img2.resize((50, 50))
     img2 = ImageTk.PhotoImage(img2)
 
     img0 = Image.open("./turtle/assets/forestbg.png")
-    img0 = img0.resize((600, 300), Image.ANTIALIAS)
+    img0 = img0.resize((600, 300))
     img0 = ImageTk.PhotoImage(img0)
     bgimg = canvas.create_image(300, 150, image=img0)
 
