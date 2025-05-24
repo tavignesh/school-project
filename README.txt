@@ -19,14 +19,6 @@ Tkinter - Window, Buttons, Entry Fields, Labels, Images (Appendix B)
 Loops - If loop, For loop, while loop, Nested loop
 Modules & Libraries - Custom Libraries, import, init, Random
 
-
-Done By:
-This project is done in python v3 by a team of students of class 12 B lead by Vignesh.T.A. The members are - Vignesh.T.A, V.Vishwesh Kissan, V.Lathish and K.Charan.
-Our Profiles in Github.com
-https://github.com/tavignesh
-https://github.com/lucifer_brine_04
-
-
 What is this project?
 This is a project done using Python3 and MySQL. This is a game console named VVLC which has some games which you can play and record your high scores. VVLC console presently has two games namely Turtle Race and Reflex Game. VVLC is the short form of the names of our team members.
 
