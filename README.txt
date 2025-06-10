@@ -37,4 +37,5 @@ When the login window appears enter your username and password to login into you
 What is Leaderboard?
 Leaderboard is a feature in the VVLC Console where you can view everyone's highscores, compare yourself and flex when you are at the top.
 
+
 Co-authored-by: VISWESHKISHAN <v.viswesh04@gmail.com>
